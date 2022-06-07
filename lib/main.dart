@@ -58,33 +58,32 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-            child: YandexMap(
-              mapObjects: mapObjects,
-              onMapCreated:
-                  (YandexMapController yandexMapController) async {
-                controllerMap = yandexMapController;
-                yandexMapController.moveCamera(
-                    CameraUpdate.newCameraPosition(const CameraPosition(
-                        target: Point(
-                          latitude:  55.755819,
-                          longitude:  37.617644,
-                        ),
-                        zoom: 14,
-                        azimuth: 0,
-                        tilt: 0)));
-                setState(() {
-                  controllerMap?.toggleUserLayer(visible: true);
-                });
-              },
-            ),
-            ),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Expanded(
+          child: YandexMap(
+            mapObjects: mapObjects,
+            onMapCreated:
+                (YandexMapController yandexMapController) async {
+              controllerMap = yandexMapController;
+              yandexMapController.moveCamera(
+                  CameraUpdate.newCameraPosition(const CameraPosition(
+                      target: Point(
+                        latitude:  55.755819,
+                        longitude:  37.617644,
+                      ),
+                      zoom: 14,
+                      azimuth: 0,
+                      tilt: 0)));
+              setState(() {
+                controllerMap?.toggleUserLayer(visible: true);
+              });
+            },
+          ),
+          ),
+          Expanded(child: Text('something'),),
+        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
